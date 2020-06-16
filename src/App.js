@@ -5,9 +5,7 @@ import CutsomDrawer from './Components/Drawer';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddMyDevotion from './Components/AddMyDevotion'
 import EditDevotion from './Components/EditDevotion';
-import DeleteDevotion from './Components/DeleteDevotion';
 import ViewDevotion from './Components/ViewDevotion';
-import Search_Query from './Components/Search_Query';
 import FullPage from './Components/FullPage';
 
 function App() {
@@ -18,8 +16,6 @@ function App() {
         <Route exact path='/viewDevotion' component={ViewDevotion}/>
         <Route exact path="/add" component={AddMyDevotion} />
         <Route  path='/edit/:id/:date' component={EditDevotion} />
-        <Route exact path='/deleteDevotion' component={DeleteDevotion} />
-        <Route exact path='/query' component={Search_Query} />
         <Route exact path='/fullPage/:date' component={FullPage}/> 
       </Switch>
       <CutsomDrawer/>

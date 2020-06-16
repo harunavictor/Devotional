@@ -53,13 +53,6 @@ function ViewDevotion() {
     }
   }
 
-
-
-
-
-
-
-
   return (
     <div>
       <Drawer>
@@ -69,6 +62,7 @@ function ViewDevotion() {
             View All Devotions
               </h1>
           
+         {/* search by date  forminput*/}
           <div className="container mb-4">
           <div className="row ml-3">
             <div className="col-md-8 ml-5">
@@ -101,8 +95,10 @@ function ViewDevotion() {
                 </Button>
             
             </div>
+            </div>
           </div>
-        </div>
+          
+              {/* getAll devotion component */}
           {data.map(res => (
            
             <GetDevotion data={res} key={res.id}

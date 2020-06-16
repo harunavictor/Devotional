@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
 import Drawer from "./Drawer";
 import axios from "axios";
 import moment from "moment";
@@ -28,17 +27,12 @@ const EditDevotion = (props) => {
       console.log("update ", id, date);
     } else {
       console.log("add");
-
-      //we are adding
     }
   };
 
   // formateed value
   const handleChange = (e) => {
-    // let a = data.date
-    // a = a.split('-')
-    // const [b, c, d] = a
-    // setformatteddate(b + '-' + c + '-' + 'd')
+
     setformatteddate(e.target.value);
   };
 
@@ -56,7 +50,7 @@ const EditDevotion = (props) => {
       console.log(data);
     } catch (error) {
 
-      console.log(error);
+      console.log();
       
     }
   };
@@ -78,6 +72,7 @@ const EditDevotion = (props) => {
     } catch (error) {
       console.log(error);
     }
+    //converting the date format to suit that of the backend
     let a = date;
     a = a.split("-");
     const [d, m, y] = a;
@@ -168,9 +163,6 @@ const EditDevotion = (props) => {
               <Button color="warning">
                 {date !== null ? "Edit Devotion" : "Add Devotion"}
               </Button>
-              {/* <Link className="btn btn-danger ml-2" to="/">
-                Cancel
-              </Link> */}
             </Form>
           </Drawer>
         </div>

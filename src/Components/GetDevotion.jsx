@@ -22,7 +22,7 @@ const GetDevotion = ({ data }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="row mb-2">
         <div className="col-md-8 ml-5">
           <div className="card ml-5" style={{ width: "30rem", Height: "5rem" }}>
@@ -31,13 +31,13 @@ const GetDevotion = ({ data }) => {
               <h6>{data.date}</h6>
               <p style={myStyle}>{data.messageBody}</p>
               <Link
-                className="btn btn-primary"
+                className="btn btn-success"
                 to={`/edit/${data.id}/${data.date}`}
               >
                 Edit
               </Link>
               <Link
-                className="btn btn-primary ml-1"
+                className="btn btn-success ml-1"
                 to={`fullPage/${data.date}`}
               >
                 Read
@@ -49,17 +49,13 @@ const GetDevotion = ({ data }) => {
                 color="danger"
                 style={{ boxShadow: "10px 10px 10px gray" }}
               >
-                DELETE
+                Delete
               </Button>
-              {/* <Button
-                style={{ boxShadow: '10px 10px 10px gray'}}
-                color="primary text-center"
-               >Add Devotion</Button> */}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

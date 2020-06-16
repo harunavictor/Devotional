@@ -27,7 +27,7 @@ const AddMyDevotion = () => {
     axios.post(
         "https://api-moga-devotions.herokuapp.com/devotion", {
         title: title,
-        date: date,
+        date: d,
         messageBody: devotion,
         prayer: prayer,
       }
@@ -43,8 +43,6 @@ const AddMyDevotion = () => {
 
   };
   
-  
-
   return (
 
     <div>
@@ -125,9 +123,6 @@ const AddMyDevotion = () => {
                 style={{ boxShadow: '10px 10px 10px gray'}}
                 color="primary text-center"
                 className="form-control">Add Devotion</Button>
-              {/* <Link className="btn btn-danger " to="/">
-                Cancel
-              </Link> */}
             </Form>
           </Drawer>
         </div>

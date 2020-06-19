@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import axios from "axios";
+import Modals from './Modals'
 
 const GetDevotion = ({ data }) => {
   var myStyle = {
@@ -11,21 +12,39 @@ const GetDevotion = ({ data }) => {
     overflow: "hidden",
     textOverflow: "ellipsis",
   };
+ // modal states
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   const removeData = async () => {
     axios
       .delete("https://api-moga-devotions.herokuapp.com/devotion/" + data.id)
       .then((result) => {
         window.location.reload();
-        console.log(result);
+        // console.log(result);
       });
   };
 
   return (
     <>
+      <Modals
+        open={open}
+        setOpen={setOpen}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+       removeData={removeData}
+      />
       <div className="row mb-2">
-        <div className="col-md-8 ml-5">
-          <div className="card ml-5" style={{ width: "30rem", Height: "5rem" }}>
+        <div className="col-md-6">
+          <div className="card" style={{ width: "30rem", Height: "5rem" }}>
             <div className="card-body">
               <h2>{data.title}</h2>
               <h6>{data.date}</h6>
@@ -41,16 +60,17 @@ const GetDevotion = ({ data }) => {
                 to={`fullPage/${data.date}`}
               >
                 Read
-              </Link>
+              </Link> 
 
               <Button
-                onClick={removeData}
+                onClick={handleOpen}
                 className="float-right"
                 color="danger"
                 style={{ boxShadow: "10px 10px 10px gray" }}
               >
                 Delete
               </Button>
+              
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import axios from "axios";
 import moment from "moment";
 import OverlayComponent from "./CustomComponent/overlay";
 import Alert from "@material-ui/lab/Alert";
+import { Link} from "react-router-dom";
 
 const EditDevotion = (props) => {
   const { id, date } = props.match.params;
@@ -42,9 +43,9 @@ const EditDevotion = (props) => {
     try {
       var date = await axios.put(
         "https://api-moga-devotions.herokuapp.com/devotion/" + id,
-        { title: title, date: date, messageBody: message }
+        { title: title, date: date, prayer:prayers, messageBody: message }
       );
-      console.log(title, date, message);
+      console.log(title, date, message,prayers);
       setProgress(false);
       setSave(true);
       console.log(data);
@@ -94,6 +95,9 @@ const EditDevotion = (props) => {
         <div className="col-md-10">
           <Drawer>
             <Form onSubmit={summitDevotion}>
+              <Link to="/ViewDevotion" className="btn btn-success mb-3 mr-2">
+              Back
+            </Link>
               <FormGroup>
                 <Label for="title">
                   <strong>Title</strong>
@@ -125,9 +129,8 @@ const EditDevotion = (props) => {
                   <strong>Prayer</strong>
                 </Label>
                 <Input
-                  readOnly
                   onChange={(e) => setPrayers(e.target.value)}
-                  value={data.prayer}
+                  value={prayers}
                   type="textarea"
                   rows="4"
                   cols="10"
